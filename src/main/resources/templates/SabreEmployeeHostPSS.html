@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Sabre Login</title>
+    <meta name="description" content="Sabre Login Authentication Portal" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <!-- Corrected Styles -->
+    <link rel="stylesheet" href="/css/spark/3.9.7/spark.katana.min.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+
+    <script src="/webjars/jquery/3.6.0/dist/jquery.min.js"></script>
+    <script src="/js/js.cookie.min.js"></script>
+    <script src="/js/submit.js"></script>
+
+    <style type="text/css">
+      @font-face {
+        font-family: "Atlassian Sans";
+        font-style: normal;
+        font-weight: 400 653;
+        font-display: swap;
+        src: local("AtlassianSans"), local("Atlassian Sans Text");
+      }
+    </style>
+  </head>
+
+  <body class="spark-content--sticky-footer">
+    <div class="spark-content__wrapper--sticky-footer">
+      <article
+        class="spark-splash-screen spark-splash-screen--panel spark-splash-screen--sign-in spark-main--sticky-footer"
+      >
+        <section class="spark-splash-screen__content">
+          <div
+            class="spark-panel spark-splash-screen__center col-xs-12 col-md-10 col-lg-6 col-xl-6 spark-pad-1"
+          >
+            <div class="spark-panel__content">
+              <a
+                href="/welcome?goto=https://commandcenter-ngp.sabre.com/sabreg/login?environment=PROD"
+                class="spark-logo spark-logo--sabre spark-logo--md spark-logo--sabre-red"
+                id="sabreLogo"
+              ></a>
+              <h3 class="spark-splash-screen__heading">Enterprise Sign In</h3>
+              <div
+                class="spark-center-block col-xs-12 col-md-10 col-lg-8 col-xl-8"
+              >
+                <div th:if="${errorMessage}" style="color: red; font-weight: bold;">
+                  <p th:text="${errorMessage}"></p>
+                </div>
+
+                <div class="spark-center-block col-xs-12 col-md-10 col-lg-8 col-xl-8">
+                  <form class="spark-splash-screen__form spark-text-left" method="post" action="/login" id="login-form" autocomplete="off" onsubmit="disableButton('submit')">
+                    <!-- Hidden inputs -->
+                    <input type="hidden" name="_csrf" value="M8vuIwxiIYoreiLTtg1ja4Yn-7E6gO9DKKT96AMxP5PJejaLUvOMQWlWGO4GSRDn1CBXCbQf1okMuY1uTJKeimdQBqD8Hw65"/>
+                    <input type="hidden" value="https://commandcenter-ngp.sabre.com/sabreg/login?environment=PROD" name="goto" id="goto"/>
+                    <input type="hidden" value="" name="RelayState" id="RelayState"/>
+                    <input type="hidden" value="default" name="siteId" id="siteId"/>
+                    <input type="hidden" value="host" name="view"/>
+
+                    <label class="spark-input">
+                      <input tabindex="1" class="spark-input__field" id="userId" name="userId" placeholder="Example: 4321" role="textbox" required />
+                      <span class="spark-label">Employee number</span>
+                    </label>
+
+                    <label class="spark-input">
+                      <input tabindex="2" class="spark-input__field" id="group" name="group" placeholder="Example: BTD0" role="textbox"/>
+                      <span class="spark-label">Suffix/Group</span>
+                    </label>
+
+                    <label class="spark-input">
+                      <input tabindex="3" type="password" class="spark-input__field" id="password" name="password" placeholder="Example: password123." role="textbox" required />
+                      <span class="spark-label">Password</span>
+                    </label>
+
+                    <button id="submit" name="login" class="spark-btn spark-btn--md spark-btn--primary spark-block--lte-md spark-mar-b-2--lg spark-pull-right--sm">
+                      Sign In
+                    </button>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </section>
+
+        <footer class="spark-footer">
+          <div class="container">
+            <a class="spark-footer__logo spark-hidden--lte-sm">
+              <img
+                src="/images/sabre-logo-black.svg"
+                alt="Sabre Logo"
+                class="spark-logo spark-logo--xs"
+              />
+            </a>
+            <div class="spark-footer__content">
+              <div class="spark-footer__copyright">
+                © <span>2025</span> Sabre GLBL Inc.
+              </div>
+              <ul class="spark-footer__list">
+                <li class="spark-footer__list-item">
+                  <a
+                    class="spark-footer__list-link"
+                    href="https://www.sabre.com/about/privacy-policy/"
+                    >Privacy policy</a
+                  >
+                </li>
+                <li class="spark-footer__list-item">
+                  <a
+                    class="spark-footer__list-link"
+                    href="https://www.sabre.com/contact-us"
+                    >Contact Us</a
+                  >
+                </li>
+                <li class="spark-footer__list-item">
+                  <a
+                    class="spark-footer__list-link"
+                    href="https://www.sabre.com/about/copyright-and-trademark-notice/"
+                    >Copyright and trademark</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+      </article>
+    </div>
+
+    <script src="/webjars/tether/1.1.1/dist/js/tether.min.js"></script>
+    <script type="module" src="/js/spark/3.9.7/spark.min.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const passwordInput = document.getElementById("password");
+        const toggleIcon = document.querySelector(
+          ".spark-input__password-toggle i"
+        );
+
+        toggleIcon.addEventListener("click", function () {
+          if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            toggleIcon.classList.remove("spark-icon-password-view");
+            toggleIcon.classList.add("spark-icon-password-hide");
+          } else {
+            passwordInput.type = "password";
+            toggleIcon.classList.remove("spark-icon-password-hide");
+            toggleIcon.classList.add("spark-icon-password-view");
+          }
+        });
+      });
+    </script>
+    <script type="application/javascript">
+      document.addEventListener("DOMContentLoaded", function () {
+        function rewriteGroup(event) {
+          const groupInput = document.getElementById("group");
+          groupInput.value = event.target.value;
+          groupInput.parentElement.classList.add("active");
+        }
+
+        const domainInput = document.getElementById("domain");
+        domainInput.addEventListener("input", rewriteGroup);
+        domainInput.addEventListener("blur", function () {
+          domainInput.removeEventListener("input", rewriteGroup);
+        });
+      });
+    </script>
+  </body>
+</html>

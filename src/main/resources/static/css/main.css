@@ -1,0 +1,68 @@
+.hidden {
+    visibility: hidden
+}
+
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.welcome-menu--panel {
+    border: 1px solid gray !important;
+    /*border-radius: 0px; !important;*/
+}
+
+.welcome-menu__list-item {
+    border-bottom: 1px solid gray;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+    text-transform: none;
+}
+
+li.welcome-menu__list-item:hover{
+    background-color: #dce0e2;
+}
+
+.spark-btn-link{
+    background:none;
+    border:none;
+    padding:0;
+    outline:inherit;
+    border-bottom:1px solid transparent;
+    color: #007b94 !important;
+    cursor:pointer !important;
+    font-weight:400;
+    position:relative;
+    text-decoration:none;
+}
+.spark-btn-link:hover{
+    color: #006074 !important;
+}
+
+.spark-icon-middle{
+    line-height: 2rem;
+}
+
+.password-rule {
+    all: unset;
+    padding: 1rem;
+    border: 1px solid transparent;
+    border-radius: 1rem;
+}
+.password-rule:hover {
+    background-color: #e1e2e5;
+    cursor: pointer;
+}
+.password-rule:focus {
+    outline: revert;
+    background-color:#007b94;
+}
+.account-font-size{
+    font-size: medium;
+}
+.sm-device-security-questions{
+    @media screen and (max-width: 660px) { flex-direction: column; }
+}
