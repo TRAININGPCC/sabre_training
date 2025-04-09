@@ -1244,7 +1244,6 @@ html {
 }
 
 body {
-    color: #404247;
     font-size: 1.3333333333rem;
     font-family: Roboto,sans-serif;
     font-style: normal;
@@ -1772,7 +1771,6 @@ hr {
 }
 
 body {
-    background-color: #f6f6f7
 }
 
 .expanded.spark-expand .spark-expand__content,.expanded.spark-table-expand .spark-expand__content {
@@ -22404,7 +22402,6 @@ hr {
 }
 
 body {
-    background-color: #f6f6f7
 }
 
 .spark-header {
@@ -30968,7 +30965,6 @@ a:active .spark-avatar--image.spark-avatar--light.spark-avatar--xl::before,a:act
 }
 
 .spark-splash-screen {
-    background-image: linear-gradient(225deg,#caccd1 0,#f6f6f7 100%)
 }
 
 .spark-splash-screen::after,.spark-splash-screen::before {
