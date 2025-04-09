@@ -1,0 +1,204 @@
+<html lang="en"><head>
+
+    <title>Sabre Login</title>
+    <meta http-equiv="refresh" content="1780">
+    <meta name="description" content="Sabre Login Authentication Portal">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' global.oktacdn.com;
+          worker-src 'self' blob: data:;
+          style-src 'self' 'unsafe-inline' global.oktacdn.com *.sabre.com *.sabre-gcp.com;
+          img-src 'self' data: global.oktacdn.com *.sabre.com *.sabre-gcp.com;
+          font-src 'self' global.oktacdn.com *.sabre.com *.sabre-gcp.com;
+          connect-src 'self' global.oktacdn.com *.oktapreview.com *.okta.com;
+          frame-src 'none';
+          object-src 'none';
+          base-uri 'self';
+          form-action 'self' *.sabre.com *.sabre-gcp.com *.windowsazure.com *.microsoft.com *.microsoftonline.com *.oktapreview.com;">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/spark/3.9.7/spark.katana.min.css">
+    <script type="module" src="/js/spark/3.9.7/spark.min.js"></script>
+
+
+    <script src="/webjars/jquery/3.6.0/dist/jquery.min.js"></script>
+    <script src="/js/js.cookie.min.js"></script>
+    <style type="text/css">
+        @font-face {
+            font-family: 'Atlassian Sans';
+            font-style: normal;
+            font-weight: 400 653;
+            font-display: swap;
+            src:
+                local('AtlassianSans'),
+                local('Atlassian Sans Text'),
+                url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/AtlassianSans-latin.woff2') format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+                U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }</style>
+
+    <style>
+        body {
+       background-image: url('/images/Sabre-Red-Launchpad-hero-2048x1365.webp');
+       background-size: cover;
+       background-position: center;
+       background-repeat: no-repeat;
+       margin: 0;
+       padding: 0;
+       min-height: 100vh;
+       width: 100vw;
+     }
+
+    </style>
+    <style>
+        .contact-button {
+          background-color: #d00000;
+          color: white;
+          padding: 12px 24px;
+          text-decoration: none;
+          font-size: 16px;
+          border-radius: 12px;
+          display: inline-block;
+          transition: background-color 0.3s ease;
+        }
+
+        .contact-button:hover {
+          background-color: #a00000;
+        }
+    </style>
+
+
+</head>
+
+
+<body class="spark-content--sticky-footer">
+
+<div class="spark-content__wrapper--sticky-footer">
+    <div class="spark-content__wrapper--sticky-footer">
+        <article class="spark-splash-screen spark-splash-screen--panel spark-splash-screen--sign-in spark-main--sticky-footer">
+            <section class="spark-splash-screen__content">
+                <div class="spark-panel spark-splash-screen__center col-xs-12 col-md-10 col-lg-4 col-xl-4">
+                    <div class="spark-panel__content">
+                        <a href="/welcome?goto=https://commandcenter-ngp.sabre.com/sabreg/login?environment%3DPROD" class="spark-logo spark-logo--sabre spark-logo--md spark-logo--sabre-red" id="sabreLogo"></a>
+                        <h3 class="spark-splash-screen__heading">Enterprise Sign In</h3>
+
+                        <div class="spark-center-block col-xs-12 col-md-10 col-lg-8 col-xl-8">
+                            <h4>Select Type</h4>
+                            <nav class="welcome-menu--panel spark-menu spark-menu--panel">
+                                <ul class="spark-menu__list">
+                                    <li class="spark-menu__list-item welcome-menu__list-item spark-flex spark-align-items-center ">
+                                        <a id="airline" class="spark-menu__list-link spark-text-left redirect-btn spark-flex spark-align-items-center flex-items-xs-between">
+                                            Airlines Login
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6 4L10 8L6 12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </a>
+
+
+
+
+                                    </li>
+                                    <li class="spark-menu__list-item welcome-menu__list-item spark-flex spark-align-items-center">
+                                        <a id="agent" class="spark-menu__list-link spark-text-left redirect-btn spark-flex spark-align-items-center flex-items-xs-between" href="/home/login/agent?goto=https://commandcenter-ngp.sabre.com/sabreg/login?environment%3DPROD&amp;force=true">
+                                            Agencies Login
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6 4L10 8L6 12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </a>
+
+
+                                    </li>
+                                    <li class="spark-menu__list-item welcome-menu__list-item spark-flex spark-flex spark-align-items-center">
+                                        <a id="sabre-sso" class="spark-menu__list-link spark-text-left redirect-btn spark-flex spark-align-items-center flex-items-xs-between" href="/sso/login/employeeAccount?goto=https://commandcenter-ngp.sabre.com/sabreg/login?environment%3DPROD&amp;force=true">
+                                            Sabre Employee SSO
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6 4L10 8L6 12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </a>
+
+
+                                    </li>
+                                    <li class="spark-menu__list-item welcome-menu__list-item spark-flex spark-flex spark-align-items-center">
+                                        <a id="host" class="spark-menu__list-link spark-text-left redirect-btn spark-flex spark-align-items-center flex-items-xs-between" href="/login/host?goto=https://commandcenter-ngp.sabre.com/sabreg/login?environment%3DPROD&amp;force=true">
+                                            Sabre Employee Host/PSS
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6 4L10 8L6 12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </a>
+
+
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div style="display: flex; justify-content: flex-end; align-items: flex-end; height: 200vh; padding-right: 1000px;">
+                <a href="/contact-us" class="contact-button" style="padding: 12px 24px; background-color: red; color: white; text-decoration: none; border-radius: 5px;">
+                    Contact Us
+                </a>
+            </div>
+
+
+            <div><div>
+                <footer class="spark-footer">
+                    <div class="container">
+                        <a class="spark-footer__logo spark-hidden--lte-sm">
+                            <img src="/images/sabre-logo-black.svg" alt="Sabre Logo" class="spark-logo spark-logo--xs">
+                        </a>
+
+                        <div class="spark-footer__content">
+                            <div class="spark-footer__copyright">© <span>2025</span> Sabre GLBL Inc.</div>
+                            <ul class="spark-footer__list">
+                                <li class="spark-footer__list-item">
+                                    <a class="spark-footer__list-link" href="https://www.sabre.com/about/privacy-policy/">Privacy policy</a>
+                                </li>
+
+                                <li class="spark-footer__list-item">
+
+
+                                    <a class="spark-footer__list-link" href="/contact-us">Contact Us</a>
+                                </li>
+                                <li class="spark-footer__list-item">
+                                    <a class="spark-footer__list-link" href="https://www.sabre.com/about/copyright-and-trademark-notice/">Copyright and trademark</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </footer>
+            </div></div>
+        </article>
+    </div>
+</div>
+
+<script src="/webjars/tether/1.1.1/dist/js/tether.min.js"></script>
+<script type="module" src="/js/spark/3.9.7/spark.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="application/javascript">
+    $(document).ready(function () {
+        $(".redirect-btn").click(function () {
+            const linkId = $(this).attr('id');
+            const ssoId = "sso";
+            if(linkId !== ssoId){
+                Cookies.set('lpDefaultSelection', linkId, {expires: 365});
+            }
+        });
+    });
+</script>
+
+<script>
+    document.getElementById("airline").addEventListener("click", function () {
+        window.location.href = "/home/login/airlines";
+    });
+</script>
+
+
+
+<div id="loom-companion-mv3" ext-id="liecbddmkiiihnedobmlmillhodjkdmb"><div id="shadow-host-companion"></div></div></body></html>
